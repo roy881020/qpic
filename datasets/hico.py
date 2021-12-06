@@ -205,6 +205,7 @@ def build(image_set, args):
         'val': (root / 'images' / 'test2015', root / 'annotations' / 'test_hico.json')
     }
     CORRECT_MAT_PATH = root / 'annotations' / 'corre_hico.npy'
+    #import pdb; pdb.set_trace()
 
     img_folder, anno_file = PATHS[image_set]
     dataset = HICODetection(image_set, img_folder, anno_file, transforms=make_hico_transforms(image_set),
