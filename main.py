@@ -270,40 +270,48 @@ def main(args):
                      'epoch': epoch,
                      'n_parameters': n_parameters}
         #import pdb; pdb.set_trace()
-        wandb.log({
-            "mAP_all": test_stats['mAP_all'],
-            "mAP_thesis": test_stats['mAP_thesis'],
-            "AP_hold_obj": test_stats['AP_hold_obj'],
-            "AP_stand": test_stats['AP_stand'],
-            "AP_sit_instr": test_stats['AP_sit_instr'],
-            "AP_ride_instr": test_stats['AP_ride_instr'],
-            "AP_walk": test_stats['AP_walk'],
-            "AP_look_obj": test_stats['AP_look_obj'],
-            "AP_hit_instr": test_stats['AP_hit_instr'],
-            "AP_hit_obj": test_stats['AP_hit_obj'],
-            "AP_eat_obj": test_stats['AP_eat_obj'],
-            "AP_eat_instr": test_stats['AP_eat_instr'],
-            "AP_jump_instr": test_stats['AP_jump_instr'],
-            "AP_lay_instr": test_stats['AP_lay_instr'],
-            "AP_talk_on_phone_instr": test_stats['AP_talk_on_phone_instr'],
-            "AP_carry_obj": test_stats['AP_carry_obj'],
-            "AP_throw_obj": test_stats['AP_throw_obj'],
-            "AP_catch_obj": test_stats['AP_catch_obj'],
-            "AP_cut_instr": test_stats['AP_cut_instr'],
-            "AP_cut_obj": test_stats['AP_cut_obj'],
-            "AP_run": test_stats['AP_run'],
-            "AP_work_on_computer_instr": test_stats['AP_work_on_computer_instr'],
-            "AP_ski_instr": test_stats['AP_ski_instr'],
-            "AP_surf_instr": test_stats['AP_surf_instr'],
-            "AP_skateboard_instr": test_stats['AP_skateboard_instr'],
-            "AP_smile": test_stats['AP_smile'],
-            "AP_drink_instr": test_stats['AP_drink_instr'],
-            "AP_kick_obj": test_stats['AP_kick_obj'],
-            "AP_point_instr": test_stats['AP_point_instr'],
-            "AP_read_obj": test_stats['AP_read_obj'],
-            "AP_snowboard_instr": test_stats['AP_snowboard_instr'],\
-            "loss" : train_stats['loss']
-        })
+        if args.dataset_file == 'hico':
+            import pdb;pdb.set_trace()
+            wandb.log({
+
+            })
+        elif args.dataset_file == 'vcoco':
+            wandb.log({
+                "mAP_all": test_stats['mAP_all'],
+                "mAP_thesis": test_stats['mAP_thesis'],
+                "AP_hold_obj": test_stats['AP_hold_obj'],
+                "AP_stand": test_stats['AP_stand'],
+                "AP_sit_instr": test_stats['AP_sit_instr'],
+                "AP_ride_instr": test_stats['AP_ride_instr'],
+                "AP_walk": test_stats['AP_walk'],
+                "AP_look_obj": test_stats['AP_look_obj'],
+                "AP_hit_instr": test_stats['AP_hit_instr'],
+                "AP_hit_obj": test_stats['AP_hit_obj'],
+                "AP_eat_obj": test_stats['AP_eat_obj'],
+                "AP_eat_instr": test_stats['AP_eat_instr'],
+                "AP_jump_instr": test_stats['AP_jump_instr'],
+                "AP_lay_instr": test_stats['AP_lay_instr'],
+                "AP_talk_on_phone_instr": test_stats['AP_talk_on_phone_instr'],
+                "AP_carry_obj": test_stats['AP_carry_obj'],
+                "AP_throw_obj": test_stats['AP_throw_obj'],
+                "AP_catch_obj": test_stats['AP_catch_obj'],
+                "AP_cut_instr": test_stats['AP_cut_instr'],
+                "AP_cut_obj": test_stats['AP_cut_obj'],
+                "AP_run": test_stats['AP_run'],
+                "AP_work_on_computer_instr": test_stats['AP_work_on_computer_instr'],
+                "AP_ski_instr": test_stats['AP_ski_instr'],
+                "AP_surf_instr": test_stats['AP_surf_instr'],
+                "AP_skateboard_instr": test_stats['AP_skateboard_instr'],
+                "AP_smile": test_stats['AP_smile'],
+                "AP_drink_instr": test_stats['AP_drink_instr'],
+                "AP_kick_obj": test_stats['AP_kick_obj'],
+                "AP_point_instr": test_stats['AP_point_instr'],
+                "AP_read_obj": test_stats['AP_read_obj'],
+                "AP_snowboard_instr": test_stats['AP_snowboard_instr'],\
+                "loss" : train_stats['loss']
+            })
+        else:
+            continue
 
         if args.output_dir and utils.is_main_process():
             with (output_dir / "log.txt").open("a") as f:
