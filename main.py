@@ -242,6 +242,9 @@ def main(args):
         train_stats = train_one_epoch(
             model, criterion, data_loader_train, optimizer, device, epoch,
             args.clip_max_norm)
+
+        import pdb;
+        pdb.set_trace()
         lr_scheduler.step()
         if args.output_dir:
             checkpoint_paths = [output_dir / 'checkpoint.pth']
@@ -271,7 +274,6 @@ def main(args):
                      'n_parameters': n_parameters}
         #import pdb; pdb.set_trace()
         if args.dataset_file == 'hico':
-            import pdb;pdb.set_trace()
             wandb.log({
 
             })
