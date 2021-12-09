@@ -269,10 +269,14 @@ def main(args):
                      **{f'test_{k}': v for k, v in test_stats.items()},
                      'epoch': epoch,
                      'n_parameters': n_parameters}
-        import pdb; pdb.set_trace()
+        #import pdb; pdb.set_trace()
         if args.dataset_file == 'hico':
             wandb.log({
-
+                "loss": train_stats['loss'],
+                "mAP": test_stats['mAP'],
+                "mAP rare": test_stats['mAP rare'],
+                "mAP non-rare": test_stats['mAP non-rare'],
+                "mean max recall": test_stats['mean max recall']
             })
         elif args.dataset_file == 'vcoco':
             wandb.log({
