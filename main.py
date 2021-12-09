@@ -269,7 +269,7 @@ def main(args):
                      **{f'test_{k}': v for k, v in test_stats.items()},
                      'epoch': epoch,
                      'n_parameters': n_parameters}
-        import pdb; pdb.set_trace()
+        #import pdb; pdb.set_trace()
         wandb.log({
             "mAP_all": test_stats['mAP_all'],
             "mAP_thesis": test_stats['mAP_thesis'],
