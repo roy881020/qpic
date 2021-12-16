@@ -24,7 +24,10 @@ from models import build_model
 import wandb
 import os
 
-os.environ['RANK'] = 4
+os.environ["MASTER_ADDR"] = "127.0.0.1"
+os.environ["MASTER_PORT"] = "23456"
+os.environ["RANK"] = "4"
+
 
 def get_args_parser():
     parser = argparse.ArgumentParser('Set transformer detector', add_help=False)
