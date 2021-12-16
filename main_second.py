@@ -22,7 +22,9 @@ from datasets import build_dataset, get_coco_api_from_dataset
 from engine import evaluate, train_one_epoch, evaluate_hoi
 from models import build_model
 import wandb
+import os
 
+os.environ['RANK'] = 4
 
 def get_args_parser():
     parser = argparse.ArgumentParser('Set transformer detector', add_help=False)
