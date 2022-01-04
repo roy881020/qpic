@@ -153,6 +153,7 @@ class HICODetection(torch.utils.data.Dataset):
                 counts[triplet] += 1
         self.rare_triplets = []
         self.non_rare_triplets = []
+        import pdb; pdb.set_trace()
         for triplet, count in counts.items():
             if count < 10:
                 self.rare_triplets.append(triplet)
