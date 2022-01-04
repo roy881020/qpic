@@ -153,7 +153,6 @@ class HICODetection(torch.utils.data.Dataset):
                 counts[triplet] += 1
         self.rare_triplets = []
         self.non_rare_triplets = []
-        import pdb; pdb.set_trace()
         for triplet, count in counts.items():
             if count < 10:
                 self.rare_triplets.append(triplet)
@@ -223,6 +222,10 @@ def build_second(image_set, args):
         'train': (root / 'images' / 'train2015', root / 'annotations' / 'trainval_hico.json'),
         'val': (root / 'images' / 'test2015', root / 'annotations' / 'test_hico.json')
     }
+    PATHS_origin = {
+        'train': (root / 'images' / 'train2015', root / 'annotations' / 'trainval_hico.json_origin'),
+        'val': (root / 'images' / 'test2015', root / 'annotations' / 'test_hico.json')
+    }
     CORRECT_MAT_PATH = root / 'annotations' / 'corre_hico.npy'
     #import pdb; pdb.set_trace()
 
@@ -230,6 +233,6 @@ def build_second(image_set, args):
     dataset = HICODetection(image_set, img_folder, anno_file, transforms=make_hico_transforms(image_set),
                             num_queries=args.num_queries)
     if image_set == 'val':
-        dataset.set_rare_hois(PATHS['train'][1])
+        dataset.set_rare_hois(PATHS_origin['train'][1])
         dataset.load_correct_mat(CORRECT_MAT_PATH)
     return dataset
