@@ -270,7 +270,7 @@ def main(args):
                      'epoch': epoch,
                      'n_parameters': n_parameters}
         #import pdb; pdb.set_trace()
-        if args.dataset_file == 'hico':
+        if args.dataset_file == 'hico' or args.dataset_file == 'hico_second':
             wandb.log({
                 "loss": train_stats['loss'],
                 "mAP": test_stats['mAP'],
