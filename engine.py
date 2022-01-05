@@ -200,6 +200,9 @@ def evaluate_hoi(dataset_file, model, postprocessors, data_loader, subject_categ
     if dataset_file == 'hico':
         evaluator = HICOEvaluator(preds, gts, subject_category_id, data_loader.dataset.rare_triplets,
                                   data_loader.dataset.non_rare_triplets, data_loader.dataset.correct_mat)
+    elif dataset_file =='hico_second':
+        evaluator = HICOEvaluator(preds, gts, subject_category_id, data_loader.dataset.rare_triplets,
+                                  data_loader.dataset.non_rare_triplets, data_loader.dataset.correct_mat)
     elif dataset_file == 'vcoco':
         evaluator = VCOCOEvaluator(preds, gts, subject_category_id, data_loader.dataset.correct_mat)
 
